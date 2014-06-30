@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.wemakeprice.security.Access;
+
 /**
  * Handles requests for the application home page.
  */
@@ -24,7 +26,7 @@ public class HomeController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@Access
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/main")
 	public ModelAndView home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
@@ -40,15 +42,9 @@ public class HomeController {
 		return mv;
 	}
 	
-	
-	
 	@RequestMapping("/admin/tina")
 	public String hello(){
 	    return "tina";
 	}
 	
-	@RequestMapping("/login")
-	public String login(){
-	    return "login";
-	}
 }

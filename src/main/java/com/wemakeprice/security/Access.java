@@ -1,4 +1,4 @@
-package com.wemakeprice.ganji;
+package com.wemakeprice.security;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

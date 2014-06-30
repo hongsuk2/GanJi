@@ -1,4 +1,4 @@
-package com.wemakeprice.ganji;
+package com.wemakeprice.security;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -8,7 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.ModelAndViewDefiningException;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-public class IntercepterHello extends HandlerInterceptorAdapter{
+public class GanjiIntercepter extends HandlerInterceptorAdapter{
     
     @Override
     public boolean preHandle(HttpServletRequest request,
@@ -21,7 +21,11 @@ public class IntercepterHello extends HandlerInterceptorAdapter{
             //@Access 없으면   null
             if(access != null){
                 //session 에서 실제로 로그인되어잇는지 체크.. 
-                throw new ModelAndViewDefiningException(new ModelAndView("redirect:/login"));
+                String login = (String) request.getSession().getAttribute("login");
+                System.out.println("dsfsdf "+ login);
+                if(login == null || !login.equals("tina")){
+                    throw new ModelAndViewDefiningException(new ModelAndView("redirect:/login"));
+                }
             }
         }
         
